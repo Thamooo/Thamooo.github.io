@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+</head>
+
+<body>
+    <script>
+    Med = 0.01;//МЕД. СТРАХОВКА
+    Min = 144;//МИН. НАЛОГ
+    Tootu = 0.028;//СТРАХОВ. ОТ БЕЗРАБОТИЦЫ
+    Pens = 0.02;//ПЕНСИОННЫЙ ФОНД
+    Podoh = 0.21;//ПОДОХОДНЫЙ НАЛОГ
+    function Raschet() {
+        payHour = document.zarp.payHour.value;//ПЛАТА ЗА ЧАС
+        workHour = document.zarp.workHour.value;//ВРЕМЯ РАБОТЫ
+        Brutto = payHour * workHour;//РАССЧЕТ БРУТТО ЗАРПЛАТЫ
+        document.getElementById('Brutto').value = Brutto;
+        if (Brutto>Min){
+          Netto=Brutto-Tootu*Brutto-Med*Brutto-Pens*Brutto-Podoh//РАССЧЕТ ЗАРПЛАТЫ НЕТТО
+          document.getElementById('Netto').value = Netto;
+          sumNalog=Brutto-Netto
+          document.getElementById('sumNalog').value = sumNalog;//РАССЧЕТ СУММЫ НАЛОГОВ
+        }else{
+          Netto=Brutto-Tootu*Brutto-Med*Brutto-Pens*Brutto;
+          document.getElementById('Netto').value = Netto;
+          sumNalog=Brutto-Netto
+          document.getElementById('sumNalog').value = sumNalog;
+        }
+    }
+    </script>
+  <b>{Калькулятор заработной платы}</b>
+        <form name="zarp">
+        <p>Введите вашу зарплату за час : </p>
+        <input type="text" name="payHour"/>
+        <br>
+        <p>Введите ваши часы работы : </p>
+        <input type="text" name="workHour"/>
+        <br>
+        <input type="button" onclick="Raschet()" value="Считать кролей!" />
+        <p>Ваша брутто зарплата : </p>
+        <input type="text" id="Brutto" value="" />
+        <br>
+        <p>Ваша сумма налогов : </p>
+        <input type="text" id="sumNalog" value="" />
+        <br>
+        <p>Ваша нетто зарплата : </p>
+        <input type="text" id="Netto" value="" />
+
+</body>
+
+
+
+
+
+</html>
